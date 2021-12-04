@@ -1,0 +1,13 @@
+version: '3.5'
+services:
+  ads:
+    build: './'
+    ports:
+      - '3000:3000'
+    networks:
+      - ms_network
+
+networks:
+  ms_network:
+    driver: bridge
+    name: ms_network
