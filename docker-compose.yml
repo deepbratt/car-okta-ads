@@ -3,9 +3,14 @@ services:
   ads:
     build: './'
     ports:
-      - '3000:3000'
+      - '3003:3003'
     networks:
       - ms_network
+    deploy:
+        resources:
+            limits:
+              cpus: 0.25
+              memory: 500M
 
 networks:
   ms_network:

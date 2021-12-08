@@ -25,7 +25,7 @@ exports.createShowNumberDetails = catchAsync(async (req, res, next) => {
 
     res.status(STATUS_CODE.CREATED).json({
       status: STATUS.SUCCESS,
-      message: SUCCESS_MSG.SUCCESS_MESSAGES.CREATED,
+      message: SUCCESS_MSG.SUCCESS_MESSAGES.CAR_SHOW_NUMBER_CREATE,
       data: {
         result,
       },
@@ -61,7 +61,7 @@ exports.getAllShowNumberData = catchAsync(async (req, res, next) => {
 
   res.status(STATUS_CODE.OK).json({
     status: STATUS.SUCCESS,
-    message: SUCCESS_MSG.SUCCESS_MESSAGES.OPERATION_SUCCESSFULL,
+    message: SUCCESS_MSG.SUCCESS_MESSAGES.ALL_CAR_SHOW_NUMBERS,
     countOnPage: result.length,
     totalCount: totalCount,
     data: {
@@ -92,7 +92,7 @@ exports.getOneShowNumberDetail = catchAsync(async (req, res, next) => {
 
   res.status(STATUS_CODE.OK).json({
     status: STATUS.SUCCESS,
-    message: SUCCESS_MSG.SUCCESS_MESSAGES.OPERATION_SUCCESSFULL,
+    message: SUCCESS_MSG.SUCCESS_MESSAGES.ONE_CAR_SHOW_NUMBER,
     data: {
       result,
     },
@@ -111,7 +111,7 @@ exports.updateShowNumberDetails = catchAsync(async (req, res, next) => {
 
   res.status(STATUS_CODE.OK).json({
     status: STATUS.SUCCESS,
-    message: SUCCESS_MSG.SUCCESS_MESSAGES.UPDATE,
+    message: SUCCESS_MSG.SUCCESS_MESSAGES.UPDATE_CAR_SHOW_NUMBER,
     data: {
       result,
     },
@@ -127,7 +127,7 @@ exports.deleteShowNumberDetails = catchAsync(async (req, res, next) => {
 
   res.status(STATUS_CODE.OK).json({
     status: STATUS.SUCCESS,
-    message: SUCCESS_MSG.SUCCESS_MESSAGES.DELETE,
+    message: SUCCESS_MSG.SUCCESS_MESSAGES.DELETE_CAR_SHOW_NUMBER,
   });
 });
 
@@ -152,7 +152,7 @@ exports.getAllLogsOfOneAd = catchAsync(async (req, res, next) => {
 
   res.status(STATUS_CODE.OK).json({
     status: STATUS.SUCCESS,
-    message: SUCCESS_MSG.SUCCESS_MESSAGES.OPERATION_SUCCESSFULL,
+    message: SUCCESS_MSG.SUCCESS_MESSAGES.ALL_LOGS_OF_ONE_AD,
     countOnPage: result.length,
     totalCount: totalCount,
     data: {
