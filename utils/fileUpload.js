@@ -33,14 +33,14 @@ exports.uploadFile = async (file) => {
   return obj;
 };
 
-exports.fileUpload = (mineType = 'none') => {
+exports.fileUpload = (mineType, myType) => {
   return multer({
     storage: memoryStorage(),
     fileFilter: (req, file, callback) => {
-      if (file.mimetype.startsWith(mineType) || mineType === 'none') {
+      if (file.mimetype.startsWith(mineType) || file.mimetype.startsWith(myType)) {
         callback(null, true);
       } else {
-        callback(new AppError(`Not an ${mineType} ! Please upload only ${mineType}`, 400), false);
+        callback(new AppError(`Not an ${mineType}  ! Please upload only ${mineType}`, 400), false);
       }
     },
   });

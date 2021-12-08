@@ -166,6 +166,9 @@ const carsSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+    selectedImage: {
+      type: String,
+    },
   },
   {
     timestamps: true,
