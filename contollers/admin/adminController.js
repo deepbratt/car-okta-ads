@@ -377,7 +377,7 @@ exports.getAllOwners = catchAsync(async (req, res, next) => {
 
   res.status(STATUS_CODE.OK).json({
     status: STATUS.SUCCESS,
-    message: SUCCESS_MSG.SUCCESS_MESSAGES.OPERATION_SUCCESSFULL,
+    message: SUCCESS_MSG.SUCCESS_MESSAGES.ALL_CAR_OWNERS,
     totalCount: totalCount,
     countOnPage: result.length,
     data: {
@@ -386,19 +386,17 @@ exports.getAllOwners = catchAsync(async (req, res, next) => {
   });
 });
 
-
-exports.getUploadStatus=catchAsync(async(req,res,next) => {
-
+exports.getUploadStatus = catchAsync(async (req, res, next) => {
   res.status(200).json({
     status: STATUS.SUCCESS,
     data: {
       result: {
-        userID:"",
-        createdBy:"",
-        s3referenceID:"",
-        successCount:"",
-        failedCount:"",
-        status:""
+        userID: '',
+        createdBy: '',
+        s3referenceID: '',
+        successCount: '',
+        failedCount: '',
+        status: '',
       },
     },
   });

@@ -4,81 +4,80 @@ const { STATUS, STATUS_CODE, SUCCESS_MSG, ERRORS } = require('@constants/tdb-con
 const { filter } = require('../factory/factoryHandler');
 
 exports.createOne = catchAsync(async (req, res, next) => {
-	
-	const result = await Color.create(req.body);
+  const result = await Color.create(req.body);
 
-	if (!result) {
-		return next(new AppError(ERRORS.INVALID.NOT_FOUND, STATUS_CODE.NOT_FOUND));
-	}
+  if (!result) {
+    return next(new AppError(ERRORS.INVALID.NOT_FOUND, STATUS_CODE.NOT_FOUND));
+  }
 
-	res.status(STATUS_CODE.CREATED).json({
-		status: STATUS.SUCCESS,
-		message: SUCCESS_MSG.SUCCESS_MESSAGES.OPERATION_SUCCESSFULL,
-		data: {
-			result,
-		},
-	});
+  res.status(STATUS_CODE.CREATED).json({
+    status: STATUS.SUCCESS,
+    message: SUCCESS_MSG.SUCCESS_MESSAGES.CAR_COLOR_CREATE,
+    data: {
+      result,
+    },
+  });
 });
 
 exports.getAll = catchAsync(async (req, res, next) => {
-	const [result, totalCount] = await filter(Color.find(), req.query);
+  const [result, totalCount] = await filter(Color.find(), req.query);
 
-	if (result.length <= 0) {
-		return next(new AppError(ERRORS.INVALID.NOT_FOUND, STATUS_CODE.NOT_FOUND));
-	}
-	res.status(STATUS_CODE.OK).json({
-		status: STATUS.SUCCESS,
-		message: SUCCESS_MSG.SUCCESS_MESSAGES.OPERATION_SUCCESSFULL,
-		countOnPage: result.length,
-		totalCount: totalCount,
-		data: {
-			result,
-		},
-	});
+  if (result.length <= 0) {
+    return next(new AppError(ERRORS.INVALID.NOT_FOUND, STATUS_CODE.NOT_FOUND));
+  }
+  res.status(STATUS_CODE.OK).json({
+    status: STATUS.SUCCESS,
+    message: SUCCESS_MSG.SUCCESS_MESSAGES.ALL_CAR_COLORS,
+    countOnPage: result.length,
+    totalCount: totalCount,
+    data: {
+      result,
+    },
+  });
 });
 
 exports.getOne = catchAsync(async (req, res, next) => {
-	const result = await Color.findById(req.params.id);
+  const result = await Color.findById(req.params.id);
 
-	if (!result) return next(new AppError(ERRORS.INVALID.NOT_FOUND, STATUS_CODE.NOT_FOUND));
+  if (!result) return next(new AppError(ERRORS.INVALID.NOT_FOUND, STATUS_CODE.NOT_FOUND));
 
-	res.status(STATUS_CODE.OK).json({
-		status: STATUS.SUCCESS,
-		message: SUCCESS_MSG.SUCCESS_MESSAGES.OPERATION_SUCCESSFULL,
-		data: {
-			result,
-		},
-	});
+  res.status(STATUS_CODE.OK).json({
+    status: STATUS.SUCCESS,
+    message: SUCCESS_MSG.SUCCESS_MESSAGES.ONE_CAR_COLOR,
+    data: {
+      result,
+    },
+  });
 });
 
 exports.updateOne = catchAsync(async (req, res, next) => {
-	const result = await Color.findByIdAndUpdate(req.params.id, req.body, {
-		new: true,
-		runValidators: true,
-	});
+  const result = await Color.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true,
+  });
 
-	if (!result) {
-		return next(new AppError(ERRORS.INVALID.NOT_FOUND, STATUS_CODE.NOT_FOUND));
-	}
+  if (!result) {
+    return next(new AppError(ERRORS.INVALID.NOT_FOUND, STATUS_CODE.NOT_FOUND));
+  }
 
-	res.status(STATUS_CODE.OK).json({
-		status: STATUS.SUCCESS,
-		message: SUCCESS_MSG.SUCCESS_MESSAGES.UPDATE,
-		data: {
-			result,
-		},
-	});
+  res.status(STATUS_CODE.OK).json({
+    status: STATUS.SUCCESS,
+    message: SUCCESS_MSG.SUCCESS_MESSAGES.UPDATE_CAR_COLOR,
+    data: {
+      result,
+    },
+  });
 });
 
 exports.deleteOne = catchAsync(async (req, res, next) => {
-	const result = await Color.findByIdAndDelete(req.params.id);
+  const result = await Color.findByIdAndDelete(req.params.id);
 
-	if (!result) {
-		return new AppError(ERRORS.INVALID.NOT_FOUND, STATUS_CODE.NOT_FOUND);
-	}
+  if (!result) {
+    return new AppError(ERRORS.INVALID.NOT_FOUND, STATUS_CODE.NOT_FOUND);
+  }
 
-	res.status(STATUS_CODE.OK).json({
-		status: STATUS.SUCCESS,
-		message: SUCCESS_MSG.SUCCESS_MESSAGES.DELETE,
-	});
+  res.status(STATUS_CODE.OK).json({
+    status: STATUS.SUCCESS,
+    message: SUCCESS_MSG.SUCCESS_MESSAGES.DELETE_CAR_COLOR,
+  });
 });
